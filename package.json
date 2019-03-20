@@ -1,0 +1,48 @@
+{
+    "name": "wallapop",
+    "version": "1.0.0",
+    "description": "",
+    "private": false,
+    "scripts": {
+        "test": "jest --watchAll",
+        "watch": "webpack --watch",
+        "start": "webpack-dev-server --open --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js"
+    },
+    "keywords": [],
+    "author": "francescq@gmail.com",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/cli": "^7.2.3",
+        "@babel/core": "^7.4.0",
+        "@babel/polyfill": "^7.4.0",
+        "@babel/preset-env": "^7.4.1",
+        "@babel/preset-react": "^7.0.0",
+        "babel-jest": "^24.3.1",
+        "babel-loader": "^8.0.5",
+        "clean-webpack-plugin": "^2.0.0",
+        "css-loader": "^2.1.1",
+        "eslint": "^5.15.1",
+        "eslint-config-prettier": "^4.1.0",
+        "eslint-plugin-prettier": "^3.0.1",
+        "html-webpack-plugin": "^3.2.0",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^24.3.1",
+        "node-sass": "^4.11.0",
+        "prettier": "^1.16.4",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1",
+        "webpack-merge": "^4.2.1"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "concurrently": "^4.1.0",
+        "d3": "^5.9.1",
+        "json-server": "^0.14.2",
+        "react": "^16.8.4",
+        "react-dom": "^16.8.4"
+    }
+}
