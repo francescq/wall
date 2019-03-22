@@ -8,7 +8,7 @@ const Header = ({ item, isFav }) => {
             </div>
             <div className="content">
                 <span className="header">
-                    {item.title}
+                    id: {item.id} Title {item.title}
                     <span className="right floated">
                         <i
                             className={`star icon ${

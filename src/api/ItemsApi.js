@@ -4,7 +4,7 @@ export default class ItemsApi {
     }
 
     searchItems(query, pagination = { page: 0, size: 5 }) {
-        console.log('fetching items', query, pagination);
+        //console.log('fetching items', query, pagination);
         const { page, size } = pagination;
 
         const answer = this.db.items.filter(e => {
@@ -33,10 +33,11 @@ export default class ItemsApi {
             result.page.totalPages = totalPages;
             result.page.page = page < totalPages ? page : totalPages - 1;
 
-            result.data = answer.slice(
-                result.page.page,
-                result.page.page + size
-            );
+            const start = result.page.page * size;
+            const offset = start + size;
+
+            result.data = answer.slice(start, offset);
+            //console.log(start, offset, result.data);
 
             resolve(result);
         });

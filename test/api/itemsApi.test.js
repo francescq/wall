@@ -14,6 +14,7 @@ describe('itempsApi', () => {
             })
             .map((e, i) => {
                 e.title = `polaroid${i}`;
+                e.id = i;
                 return e;
             })
             .slice(0, 5);
@@ -110,10 +111,27 @@ describe('itempsApi', () => {
             });
         });
 
+        describe('data', () => {
+            it('should returns itmes of given page', async () => {
+                const pageZeroItems = await api.searchItems('pol', {
+                    page: 0,
+                    size: 2,
+                });
+                const pageOneItems = await api.searchItems('pol', {
+                    page: 1,
+                    size: 2,
+                });
+
+                console.log(pageZeroItems);
+                expect(pageZeroItems.data[0].id).toEqual(0);
+                expect(pageOneItems.data[0].id).toEqual(2);
+            });
+        });
+
         describe('size', () => {
             it('should return pages of x element', async () => {
                 const items = await api.searchItems('pOlaroid', {
-                    page: 1,
+                    page: 0,
                     size: 3,
                 });
 
