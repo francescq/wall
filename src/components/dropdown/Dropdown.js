@@ -1,13 +1,15 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+import { searchItem } from '../../actions';
 import './Dropdown.css';
 
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             dropdownActive: false,
-            order: 'asc',
-            orderBy: Object.values(this.props.fields)[0].key,
         };
     }
 
@@ -19,13 +21,19 @@ class Dropdown extends React.Component {
     doOrderBy = e => {
         e.preventDefault();
         const newOrderBy = e.target.getAttribute('data-value');
-        this.setState({ orderBy: newOrderBy });
+
+        const newPage = this.props.pagination.page;
+        newPage.orderBy = newOrderBy;
+        this.props.searchItem(newPage);
     };
 
     doOrder = e => {
         e.preventDefault();
         const newOrder = e.target.getAttribute('data-value');
-        this.setState({ order: newOrder });
+
+        const newPage = this.props.pagination.page;
+        newPage.order = newOrder;
+        this.props.searchItem(newPage);
     };
 
     renderItem(item, checked) {
@@ -33,7 +41,9 @@ class Dropdown extends React.Component {
             <div className="item" key={item.key}>
                 <a href="#" onClick={this.doOrderBy} data-value={item.key}>
                     {item.value}{' '}
-                    {this.state.orderBy === item.key ? checked : null}
+                    {this.props.pagination.page.orderBy === item.key
+                        ? checked
+                        : null}
                 </a>
             </div>
         );
@@ -52,10 +62,12 @@ class Dropdown extends React.Component {
         return (
             <div className="ui dropdown active">
                 <button onClick={this.toggle} className="ui button primary">
-                    {this.getCurentOrderedProperty(this.state.orderBy)}
+                    {this.getCurentOrderedProperty(
+                        this.props.pagination.page.orderBy
+                    )}
                     <i
                         className={`${
-                            this.state.order === 'desc'
+                            this.props.pagination.page.order === 'desc'
                                 ? 'sort down'
                                 : 'sort up'
                         } icon`}
@@ -71,13 +83,17 @@ class Dropdown extends React.Component {
                     <div className="item">
                         <a href="#" onClick={this.doOrder} data-value="asc">
                             ascendind{' '}
-                            {this.state.order === 'asc' ? checked : null}
+                            {this.props.pagination.page.order === 'asc'
+                                ? checked
+                                : null}
                         </a>
                     </div>
                     <div className="item">
                         <a href="#" onClick={this.doOrder} data-value="desc">
                             descending{' '}
-                            {this.state.order === 'desc' ? checked : null}
+                            {this.props.pagination.page.order === 'desc'
+                                ? checked
+                                : null}
                         </a>
                     </div>
                 </div>
@@ -86,4 +102,11 @@ class Dropdown extends React.Component {
     }
 }
 
-export default Dropdown;
+const map = state => {
+    return { pagination: state.pagination };
+};
+
+export default connect(
+    map,
+    { searchItem }
+)(Dropdown);

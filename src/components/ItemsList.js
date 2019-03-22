@@ -8,10 +8,6 @@ import Paginate from './paginate/Paginate';
 import Dropdown from './dropdown/Dropdown';
 
 class ItemList extends React.Component {
-    onPageChange = e => {
-        this.props.onPageChange(e.selected);
-    };
-
     renderItem(item) {
         return (
             <ItemDetail className="column" key={item.id} item={item}>
@@ -46,14 +42,14 @@ class ItemList extends React.Component {
         return (
             <div className="ui three column relaxed grid">
                 <div className="sixteen wide column">
-                    <Paginate onPageChange={this.onPageChange} />
+                    <Paginate />
                 </div>
                 <div className="sixteen wide column">
                     <Dropdown fields={this.getItemKeys(this.props.items[0])} />
                 </div>
                 <List items={this.props.items} renderItem={this.renderItem} />
                 <div className="sixteen wide column">
-                    <Paginate onPageChange={this.onPageChange} />
+                    <Paginate />
                 </div>
             </div>
         );

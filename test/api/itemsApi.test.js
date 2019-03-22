@@ -14,11 +14,10 @@ describe('itempsApi', () => {
             })
             .map((e, i) => {
                 e.title = `polaroid${i}`;
-                e.price = i + '';
                 e.id = i;
+                e.price = i + '';
                 return e;
-            })
-            .slice(0, 5);
+            });
 
         api = new ItemsApi(myDb);
     });
@@ -42,30 +41,28 @@ describe('itempsApi', () => {
                 order: 'desc',
             });
 
-            expect(items.data[0].title).toEqual('polaroid4');
-            expect(items.data[1].title).toEqual('polaroid3');
+            expect(items.data[0].title).toEqual('polaroid5');
+            expect(items.data[1].title).toEqual('polaroid4');
         });
 
         it('should order by price asc', async () => {
-            const items = await api.searchItems('pola', {
+            const items = await api.searchItems('wal', {
                 size: 2,
                 orderBy: 'price',
                 order: 'asc',
             });
 
             expect(items.data[0].price).toEqual('0');
-            expect(items.data[1].price).toEqual('1');
         });
 
         it('should order by price desc', async () => {
-            const items = await api.searchItems('pola', {
-                size: 2,
+            const items = await api.searchItems('wal', {
+                size: 1,
                 orderBy: 'price',
                 order: 'desc',
             });
 
-            expect(items.data[0].price).toEqual('4');
-            expect(items.data[1].price).toEqual('3');
+            expect(items.data[0].price).toEqual('5');
         });
     });
 
@@ -154,7 +151,7 @@ describe('itempsApi', () => {
                     size: 1,
                 });
 
-                expect(items.page.page).toBe(4);
+                expect(items.page.page).toBe(5);
             });
         });
 
@@ -203,7 +200,7 @@ describe('itempsApi', () => {
                     size: 1,
                 });
 
-                expect(items.page.totalPages).toBe(5);
+                expect(items.page.totalPages).toBe(6);
             });
 
             it('should return 0 when the result is empty', async () => {
@@ -224,7 +221,7 @@ describe('itempsApi', () => {
                 });
 
                 expect(items.data[0].title).toEqual('polaroid0');
-                expect(items.page.totalPages).toBe(5);
+                expect(items.page.totalPages).toBe(6);
             });
 
             it('should return 2nd page', async () => {
@@ -243,7 +240,7 @@ describe('itempsApi', () => {
                     size: 1,
                 });
 
-                expect(items.data[0].title).toEqual('polaroid4');
+                expect(items.data[0].title).toEqual('polaroid5');
                 expect(items.data.length).toBe(1);
             });
         });
