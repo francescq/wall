@@ -2,23 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ItemDetail from './items/ItemDetail';
+import ItemDescription from './items/ItemDescription';
 import Paginate from './paginate/Paginate';
-import List from './List';
-
-import './ItemList.css';
 
 class ItemList extends React.Component {
     onPageChange = e => {
         this.props.onPageChange(e.selected);
     };
 
-    renderPagination() {
-        return <Paginate onPageChange={this.onPageChange} />;
-    }
-
     renderedList() {
         return this.props.items.map(item => {
-            return <ItemDetail className="column" key={item.id} item={item} />;
+            return (
+                <ItemDetail className="column" key={item.id} item={item}>
+                    <ItemDescription item={item} />
+                </ItemDetail>
+            );
         });
     }
 
@@ -30,11 +28,11 @@ class ItemList extends React.Component {
         return (
             <div className="ui three column relaxed grid">
                 <div className="sixteen wide column">
-                    {this.renderPagination()}
+                    <Paginate onPageChange={this.onPageChange} />
                 </div>
                 {this.renderedList()}
                 <div className="sixteen wide column">
-                    {this.renderPagination()}
+                    <Paginate onPageChange={this.onPageChange} />
                 </div>
             </div>
         );

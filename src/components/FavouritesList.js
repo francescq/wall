@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import ItemDetail from './items/ItemDetail';
 
-class Favourites extends React.Component {
-    renderFavItems = () => {
+class FavouritesList extends React.Component {
+    renderedList = () => {
         const { favourites } = this.props;
 
         if (favourites.length === 0) {
@@ -23,15 +24,18 @@ class Favourites extends React.Component {
     };
 
     render() {
-        return <div>{this.renderFavItems()}</div>;
+        return (
+            <div className="ui three column relaxed grid">
+                {this.renderedList()}
+            </div>
+        );
     }
 }
 
 const map = state => {
     return {
         favourites: Object.values(state.favourites),
-        // cache: state.cache,
     };
 };
 
-export default connect(map)(Favourites);
+export default connect(map)(FavouritesList);

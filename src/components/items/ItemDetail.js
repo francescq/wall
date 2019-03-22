@@ -3,6 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getFavourites, addFavourite, removeFavourite } from '../../actions';
 
+import ItemHeader from './ItemHeader';
+import ItemFavouriteButton from './ItemFavouriteButton';
+
 require.context('../../images/', true, /\.(png|svg|jpg|gif)$/);
 
 class ItemDetail extends React.Component {
@@ -16,43 +19,6 @@ class ItemDetail extends React.Component {
         }
     };
 
-    renderDescription = item => {
-        if (this.props.fav) {
-            return '';
-        }
-        return (
-            <div className="content">
-                <div className="meta">{item.email}</div>
-                <div className="description">{item.description}</div>
-            </div>
-        );
-    };
-
-    renderExtraContent = item => {
-        if (this.props.fav) {
-            return '';
-        }
-        return (
-            <div className="extra content">
-                <span className="center floated">Price {item.price} €</span>
-            </div>
-        );
-    };
-
-    renderBottomButton = () => {
-        return (
-            <div
-                className={`ui bottom attached button ${
-                    this.isFav ? 'negative' : 'primary'
-                }`}
-                onClick={this.onStarClick}
-            >
-                <i className={`${this.isFav ? 'minus' : 'add'} icon`} />
-                {this.isFav ? 'Remove from favourites' : 'Add to favourites'}
-            </div>
-        );
-    };
-
     isOnFavourites(id) {
         return this.props.favourites[id] === undefined ? false : true;
     }
@@ -60,24 +26,12 @@ class ItemDetail extends React.Component {
     renderItemCard = item => {
         return (
             <div className="ui card">
-                <div className="image">
-                    <img src={`/images/${item.image}`} />
-                </div>
-                <div className="content">
-                    <span className="header">
-                        {item.title}
-                        <span className="right floated">
-                            <i
-                                className={`star icon ${
-                                    this.isFav ? 'is_favourite' : ''
-                                }`}
-                            />
-                        </span>
-                    </span>
-                </div>
-                {this.renderDescription(item)}
-                {this.renderExtraContent(item)}
-                {this.renderBottomButton()}
+                <ItemHeader item={item} isFav={this.isFav} />
+                {this.props.children}
+                <ItemFavouriteButton
+                    isFav={this.isFav}
+                    onStarClick={this.onStarClick}
+                />
             </div>
         );
     };

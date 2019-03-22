@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
 import { getFavourites, addFavourite, removeFavourite } from '../actions';
-import Favourites from './Favourites';
+import FavouritesList from './FavouritesList';
 
 class SideAction extends React.Component {
     state = { show: false };
@@ -53,7 +53,7 @@ class SideAction extends React.Component {
                     <Modal
                         onDismis={this.onDismis}
                         show={this.state.show}
-                        content={<Favourites />}
+                        content={<FavouritesList />}
                         title="Favourites"
                     />
                 </div>
