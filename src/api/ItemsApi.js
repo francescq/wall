@@ -4,31 +4,43 @@ export default class ItemsApi {
     }
 
     searchItems(query, pagination = { page: 0, size: 5 }) {
+        console.log('fetching items', query, pagination);
         const { page, size } = pagination;
 
         const answer = this.db.items.filter(e => {
             if (!query) {
-                return true;
+                return false;
             }
 
-            return e.title.match(new RegExp(query, 'i'));
+            const regex = new RegExp(query, 'i');
+
+            return (
+                e.title.match(regex) ||
+                e.description.match(regex) ||
+                e.price.match(regex) ||
+                e.email.match(regex)
+            );
         });
 
-        const result = {};
-        result.page = {};
+        const willFetch = new Promise(resolve => {
+            const result = {};
+            result.page = {};
 
-        result.page.size = size;
+            result.page.size = size;
 
-        const totalPages = Math.ceil(answer.length / size);
+            const totalPages = Math.ceil(answer.length / size);
 
-        result.page.totalPages = totalPages;
-        result.page.page = page < totalPages ? page : totalPages - 1;
+            result.page.totalPages = totalPages;
+            result.page.page = page < totalPages ? page : totalPages - 1;
 
-        result.results = answer.slice(
-            result.page.page,
-            result.page.page + size
-        );
+            result.data = answer.slice(
+                result.page.page,
+                result.page.page + size
+            );
 
-        return result;
+            resolve(result);
+        });
+
+        return willFetch;
     }
 }

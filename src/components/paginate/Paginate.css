@@ -1,0 +1,8 @@
+.page {
+    display: inline;
+}
+
+.activePage {
+    display: inline;
+    background-color: #00b5ad !important;
+}
