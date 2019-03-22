@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { setTerm, searchItem } from '../actions';
 import { Field, reduxForm } from 'redux-form';
 
 class SearchBar extends React.Component {

@@ -43,7 +43,6 @@ export default class ItemsApi {
 
         const willFetch = new Promise(resolve => {
             const result = {};
-
             const answer = queryItem();
             const orderedAnswer = applyOrder(answer);
             result.page = getPageMeta(orderedAnswer, page, size);
