@@ -1,19 +1,20 @@
 version: 2
 jobs:
-    build: ...
+    build:
+        - checkout
+        - run:
+              name: Install Dependencies
+              command: npm install
+        - run:
+              name: Jest Suite
+              command: npm run test --ci --testResultsProcessor="jest-junit"
+              environment:
+                  JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml'
     deploy:
         docker:
             - image: buildpack-deps:trusty
         steps:
             - checkout
-            - run:
-                  name: Install Dependencies
-                  command: npm install
-            - run:
-                  name: Jest Suite
-                  command: npm run test --ci --testResultsProcessor="jest-junit"
-                  environment:
-                      JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml'
             - run:
                   name: Deploy Master to Heroku
                   command: |
