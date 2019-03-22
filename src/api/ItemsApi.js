@@ -100,11 +100,11 @@ export default class ItemsApi {
 
         this.pagination = pagination;
 
-        console.log(
-            `fetching items query:${query}, pagination: ${JSON.stringify(
-                pagination
-            )}`
-        );
+        // console.log(
+        //     `fetching items query:${query}, pagination: ${JSON.stringify(
+        //         pagination
+        //     )}`
+        // );
 
         const willFetch = new Promise(resolve => {
             const result = {};
