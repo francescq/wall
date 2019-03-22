@@ -12,7 +12,7 @@ jobs:
                   command: npm install
             - run:
                   name: Jest Suite
-                  command: npm run test --ci --testResultsProcessor="jest-junit"
+                  command: jest test --ci --testResultsProcessor="jest-junit"
                   environment:
                       JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml'
     deploy:
