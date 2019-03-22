@@ -4,7 +4,8 @@
     "description": "",
     "private": false,
     "scripts": {
-        "test": "jest --watchAll",
+        "test": "jest",
+        "test-watch": "jest --watchAll",
         "watch": "webpack --watch",
         "start": "webpack-dev-server --open --config webpack.dev.js",
         "build": "webpack --config webpack.prod.js"
