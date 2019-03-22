@@ -9,6 +9,7 @@ class Paginate extends React.Component {
     onPageChange = newPageNumber => {
         const newPage = this.props.pagination.page;
         newPage.page = newPageNumber.selected;
+        console.log('page change');
         this.props.searchItem(newPage);
     };
 
