@@ -3,9 +3,19 @@ export default class ItemsApi {
         this.db = db;
     }
 
-    searchItems(query, pagination = { page: 0, size: 5 }) {
+    searchItems(query, pagination = {}) {
+        if (!pagination.page) {
+            pagination.page = 0;
+        }
+        if (!pagination.size) {
+            pagination.size = 5;
+        }
+        if (!pagination.order) {
+            pagination.order = 'asc';
+        }
+
+        const { page, size, orderBy, order } = pagination;
         //console.log('fetching items', query, pagination);
-        const { page, size } = pagination;
 
         const queryItem = () => {
             return this.db.items.filter(e => {
@@ -38,6 +48,30 @@ export default class ItemsApi {
         };
 
         const applyOrder = answer => {
+            if (!pagination.orderBy) {
+                return answer;
+            }
+            const order = pagination.order === 'asc' ? 1 : -1;
+
+            answer.sort((a, b) => {
+                const aParam = a[orderBy];
+                const bParam = b[orderBy];
+
+                let compare = 0;
+
+                if (aParam > bParam) {
+                    compare = 1;
+                }
+                if (aParam < bParam) {
+                    compare = -1;
+                }
+
+                console.log(aParam, bParam, compare, order);
+                return compare * order;
+            });
+
+            console.log(answer);
+
             return answer;
         };
 

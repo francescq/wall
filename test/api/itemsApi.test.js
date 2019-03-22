@@ -14,12 +14,59 @@ describe('itempsApi', () => {
             })
             .map((e, i) => {
                 e.title = `polaroid${i}`;
+                e.price = i + '';
                 e.id = i;
                 return e;
             })
             .slice(0, 5);
 
         api = new ItemsApi(myDb);
+    });
+
+    describe('order', () => {
+        it('should order by title asc', async () => {
+            const items = await api.searchItems('pola', {
+                size: 2,
+                orderBy: 'title',
+                order: 'asc',
+            });
+
+            expect(items.data[0].title).toEqual('polaroid0');
+            expect(items.data[1].title).toEqual('polaroid1');
+        });
+
+        it('should order by title desc', async () => {
+            const items = await api.searchItems('pola', {
+                size: 2,
+                orderBy: 'title',
+                order: 'desc',
+            });
+
+            expect(items.data[0].title).toEqual('polaroid4');
+            expect(items.data[1].title).toEqual('polaroid3');
+        });
+
+        it('should order by price asc', async () => {
+            const items = await api.searchItems('pola', {
+                size: 2,
+                orderBy: 'price',
+                order: 'asc',
+            });
+
+            expect(items.data[0].price).toEqual('0');
+            expect(items.data[1].price).toEqual('1');
+        });
+
+        it('should order by price desc', async () => {
+            const items = await api.searchItems('pola', {
+                size: 2,
+                orderBy: 'price',
+                order: 'desc',
+            });
+
+            expect(items.data[0].price).toEqual('4');
+            expect(items.data[1].price).toEqual('3');
+        });
     });
 
     describe('search', () => {
@@ -67,9 +114,9 @@ describe('itempsApi', () => {
             });
 
             it('should OR filter by price', async () => {
-                const items = await api.searchItems('50');
+                const items = await api.searchItems('1');
 
-                expect(items.data.length).toBe(5);
+                expect(items.data.length).toBe(1);
             });
         });
     });
@@ -122,7 +169,6 @@ describe('itempsApi', () => {
                     size: 2,
                 });
 
-                console.log(pageZeroItems);
                 expect(pageZeroItems.data[0].id).toEqual(0);
                 expect(pageOneItems.data[0].id).toEqual(2);
             });
