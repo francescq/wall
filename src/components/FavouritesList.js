@@ -2,31 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ItemDetail from './items/ItemDetail';
+import List from './List';
 
 class FavouritesList extends React.Component {
-    renderedList = () => {
-        const { favourites } = this.props;
-
-        if (favourites.length === 0) {
-            return <div>Favourites are empty</div>;
-        }
-
-        return favourites.map(item => {
-            return (
-                <ItemDetail
-                    className="column"
-                    key={item.id}
-                    item={item}
-                    fav={true}
-                />
-            );
-        });
-    };
+    renderFavItem(item) {
+        return (
+            <ItemDetail
+                className="column"
+                key={item.id}
+                item={item}
+                fav={true}
+            />
+        );
+    }
 
     render() {
         return (
             <div className="ui three column relaxed grid">
-                {this.renderedList()}
+                <List
+                    items={this.props.favourites}
+                    renderItem={this.renderFavItem}
+                    emptyMessage={
+                        <div className="content">Favourites is empty</div>
+                    }
+                />
             </div>
         );
     }

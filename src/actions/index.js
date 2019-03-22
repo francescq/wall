@@ -14,6 +14,8 @@ const itemsApi = new ItemsApi(db);
 const favouritesApi = new FavouritesApi();
 
 export const searchItem = page => async (dispatch, getState) => {
+    console.log('pagination', page);
+
     const answer = await itemsApi.searchItems(getState().term.term, page);
 
     return dispatch({

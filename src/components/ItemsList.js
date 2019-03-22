@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import List from './List';
 import ItemDetail from './items/ItemDetail';
 import ItemDescription from './items/ItemDescription';
 import Paginate from './paginate/Paginate';
@@ -10,14 +11,12 @@ class ItemList extends React.Component {
         this.props.onPageChange(e.selected);
     };
 
-    renderedList() {
-        return this.props.items.map(item => {
-            return (
-                <ItemDetail className="column" key={item.id} item={item}>
-                    <ItemDescription item={item} />
-                </ItemDetail>
-            );
-        });
+    renderItem(item) {
+        return (
+            <ItemDetail className="column" key={item.id} item={item}>
+                <ItemDescription item={item} />
+            </ItemDetail>
+        );
     }
 
     render() {
@@ -30,7 +29,7 @@ class ItemList extends React.Component {
                 <div className="sixteen wide column">
                     <Paginate onPageChange={this.onPageChange} />
                 </div>
-                {this.renderedList()}
+                <List items={this.props.items} renderItem={this.renderItem} />
                 <div className="sixteen wide column">
                     <Paginate onPageChange={this.onPageChange} />
                 </div>
