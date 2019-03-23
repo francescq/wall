@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({ item, isFav }) => {
+const Header = ({ item, isFav, onStarClick }) => {
     return (
         <React.Fragment>
             <div className="image">
@@ -8,10 +8,10 @@ const Header = ({ item, isFav }) => {
             </div>
             <div className="content">
                 <span className="header">
-                    id: {item.id} Title {item.title}
-                    <span className="right floated">
+                    {item.title}
+                    <span onClick={onStarClick} className="right floated">
                         <i
-                            className={`star icon ${
+                            className={`star link icon ${
                                 isFav ? 'is_favourite' : ''
                             }`}
                         />

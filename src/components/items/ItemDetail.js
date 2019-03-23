@@ -26,7 +26,11 @@ class ItemDetail extends React.Component {
     renderItemCard = item => {
         return (
             <div className="ui card">
-                <ItemHeader item={item} isFav={this.isFav} />
+                <ItemHeader
+                    item={item}
+                    isFav={this.isFav}
+                    onStarClick={this.onStarClick}
+                />
                 {this.props.children}
                 <ItemFavouriteButton
                     isFav={this.isFav}

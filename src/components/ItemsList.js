@@ -21,12 +21,18 @@ class ItemList extends React.Component {
         }
 
         return (
-            <div className="ui three column relaxed grid">
-                <div className="sixteen wide column">
+            <div className="ui stackable one column grid">
+                <div className="column">
                     <Paginate />
                 </div>
-                <List items={this.props.items} renderItem={this.renderItem} />
-                <div className="sixteen wide column">
+                <div className="column">
+                    <List
+                        items={this.props.items}
+                        renderItem={this.renderItem}
+                        className="ui stackable three column centered grid"
+                    />
+                </div>
+                <div className="column">
                     <Paginate />
                 </div>
             </div>
@@ -34,7 +40,7 @@ class ItemList extends React.Component {
     }
 }
 
-const map = (state, props) => {
+const map = state => {
     return {
         items: Object.values(state.items),
     };
