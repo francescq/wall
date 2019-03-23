@@ -1,15 +1,12 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
-import { getFavourites, addFavourite, removeFavourite } from '../actions';
+import { addFavourite, removeFavourite } from '../actions';
 import FavouritesList from './FavouritesList';
+import './SideAction.scss';
 
 class SideAction extends React.Component {
     state = { show: false };
-
-    componentDidMount() {
-        this.props.getFavourites();
-    }
 
     onDismis = e => {
         e.stopPropagation();
@@ -28,10 +25,16 @@ class SideAction extends React.Component {
 
         return (
             <div onClick={this.onFavouriteClick} className="ui one column grid">
-                <div className="mobile only tablet only one wide column">
+                <div className="mobile only tablet only column">
                     <div className="ui segment">
                         <a className="teal item">
-                            <i className="star icon" />
+                            <i
+                                className={`star icon ${
+                                    this.props.favourites.length
+                                        ? 'are_favourites'
+                                        : ''
+                                }`}
+                            />
                         </a>
                         <div className="ui teal left pointing label">
                             {this.props.favourites.length}
@@ -64,11 +67,11 @@ class SideAction extends React.Component {
 
 const map = state => {
     return {
-        favourites: state.favourites,
+        favourites: Object.values(state.favourites),
     };
 };
 
 export default connect(
     map,
-    { getFavourites, addFavourite, removeFavourite }
+    { addFavourite, removeFavourite }
 )(SideAction);

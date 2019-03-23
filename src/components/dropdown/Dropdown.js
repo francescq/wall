@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { searchItem } from '../../actions';
-import './Dropdown.css';
+import './Dropdown.scss';
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -40,7 +40,12 @@ class Dropdown extends React.Component {
 
     renderItem(item, checked) {
         return (
-            <div className="item" key={item.key}>
+            <div
+                className="item"
+                key={item.key}
+                onClick={this.doOrderBy}
+                data-value={item.key}
+            >
                 <a href="#" onClick={this.doOrderBy} data-value={item.key}>
                     {item.value}{' '}
                     {this.props.pagination.page.orderBy === item.key
@@ -62,8 +67,11 @@ class Dropdown extends React.Component {
         });
 
         return (
-            <div className="ui dropdown active">
-                <button onClick={this.toggle} className="ui button primary">
+            <span className="ui dropdown active">
+                <button
+                    onClick={this.toggle}
+                    className="ui button primary dropdown_align"
+                >
                     {this.getCurentOrderedProperty(
                         this.props.pagination.page.orderBy
                     )}
@@ -82,7 +90,11 @@ class Dropdown extends React.Component {
                 >
                     {output}
                     <div className="divider" />
-                    <div className="item">
+                    <div
+                        className="item"
+                        onClick={this.doOrder}
+                        data-value="asc"
+                    >
                         <a href="#" onClick={this.doOrder} data-value="asc">
                             ascendind{' '}
                             {this.props.pagination.page.order === 'asc'
@@ -90,7 +102,11 @@ class Dropdown extends React.Component {
                                 : null}
                         </a>
                     </div>
-                    <div className="item">
+                    <div
+                        className="item"
+                        onClick={this.doOrder}
+                        data-value="desc"
+                    >
                         <a href="#" onClick={this.doOrder} data-value="desc">
                             descending{' '}
                             {this.props.pagination.page.order === 'desc'
@@ -99,7 +115,7 @@ class Dropdown extends React.Component {
                         </a>
                     </div>
                 </div>
-            </div>
+            </span>
         );
     }
 }

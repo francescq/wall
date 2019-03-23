@@ -1,0 +1,24 @@
+.page {
+    display: inline;
+}
+
+.activePage {
+    display: inline;
+    background-color: #00b5ad !important;
+
+    a {
+        color: white !important;
+        font-weight: bold;
+    }
+}
+
+.paginateLeft {
+    padding-inline-start: 0px;
+    display: inline;
+}
+
+.unactivePage {
+    a {
+        color: darkslategrey;
+    }
+}
