@@ -6,7 +6,7 @@ import Header from './Header';
 import ItemsList from './ItemsList';
 import { getFavourites } from '../actions';
 
-class App extends React.Component {
+export class App extends React.Component {
     componentDidMount() {
         this.props.getFavourites();
     }

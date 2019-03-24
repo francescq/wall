@@ -6,8 +6,6 @@ import { getFavourites, addFavourite, removeFavourite } from '../../actions';
 import ItemHeader from './ItemHeader';
 import ItemFavouriteButton from './ItemFavouriteButton';
 
-require.context('../../images/', true, /\.(png|svg|jpg|gif)$/);
-
 class ItemDetail extends React.Component {
     onStarClick = e => {
         const { item } = this.props;
