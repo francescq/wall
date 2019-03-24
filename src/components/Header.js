@@ -1,17 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import SearchBar from './SearchBar';
 import SideAction from './SideAction';
 import { setTerm } from '../actions';
 
-class Header extends React.Component {
+export class Header extends React.Component {
+    pickTerm = props => {
+        return _.pick(props, 'term');
+    };
+
     render() {
         return (
             <div className="ui grid">
                 <div className="eleven wide column">
                     <SearchBar
-                        initialValues={_.pick(this.props.term, 'term')}
+                        initialValues={this.pickTerm(this.props)}
                         onSubmit={this.props.setTerm}
                     />
                 </div>
