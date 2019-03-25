@@ -26,13 +26,13 @@ jobs:
                   name: code-coverage
                   command: 'npx jest --coverage --reporter=text-lcov'
             - store_artifacts:
-                  path: junit.xml
+                  path: reports
                   prefix: tests
             - store_artifacts:
                   path: coverage
                   prefix: coverage
             - store_test_results:
-                  path: junit.xml
+                  path: reports
 
     deploy:
         docker:
