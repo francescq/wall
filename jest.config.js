@@ -12,4 +12,5 @@ module.exports = {
         '\\.(scss|css)$': 'identity-obj-proxy',
     },
     setupFilesAfterEnv: ['<rootDir>test/setup/setupEnzyme.js'],
+    reporters: ['default', 'jest-junit'],
 };

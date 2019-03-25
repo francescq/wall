@@ -25,7 +25,7 @@ describe('<Header />', () => {
         expect(wrapper.find(SideAction)).toHaveLength(1);
     });
 
-    describe('>SearchBar />', () => {
+    describe('<SearchBar />', () => {
         test('should inject term of state on SearchBar', () => {
             const searchProps = wrapper.find(SearchBar).props();
 
