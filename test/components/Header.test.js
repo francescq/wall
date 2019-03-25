@@ -32,7 +32,7 @@ describe('<Header />', () => {
             expect(searchProps.term).toEqual('mySearchTerm');
         });
 
-        test('should onSubmit on SearchBar', () => {
+        test('should inject onSubmit on SearchBar', () => {
             const searchProps = wrapper.find(SearchBar).props();
 
             expect(searchProps.onSubmit).toEqual('setTerm');
