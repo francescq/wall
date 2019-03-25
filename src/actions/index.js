@@ -15,8 +15,10 @@ const favouritesApi = new FavouritesApi();
 
 export const searchItem = page => async (dispatch, getState) => {
     const myPage = page ? page : { orderBy: 'title', order: 'asc' };
-    //console.log('myPage', myPage);
-    const answer = await itemsApi.searchItems(getState().term.term, myPage);
+
+    const term = getState().term;
+
+    const answer = await itemsApi.searchItems(term, myPage);
 
     return dispatch({
         type: GET_ITEMS,
@@ -25,7 +27,7 @@ export const searchItem = page => async (dispatch, getState) => {
 };
 
 export const setTerm = term => async dispatch => {
-    dispatch({ type: SET_TERM, payload: term.search });
+    dispatch({ type: SET_TERM, payload: term });
 
     return dispatch(searchItem());
 };

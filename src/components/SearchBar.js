@@ -1,38 +1,40 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { setTerm } from '../actions';
 
 export class SearchBar extends React.Component {
-    renderInput({ input }) {
-        return (
-            <input
-                id="search"
-                {...input}
-                placeholder="type your search"
-                type="text"
-            />
-        );
+    constructor(props) {
+        super(props);
+        this.state = { term: props.term };
     }
 
-    onSubmit = formProps => {
-        this.props.onSubmit(formProps);
+    onSubmit = e => {
+        e.preventDefault();
+
+        if (this.props.term !== this.state.term) {
+            this.props.onSubmit(this.state.term);
+        }
+    };
+
+    onChange = e => {
+        this.setState({ term: e.target.value });
     };
 
     render() {
         return (
             <div className="ui ten wide column segment">
-                <form
-                    id="search-form"
-                    onSubmit={this.props.handleSubmit(this.onSubmit)}
-                >
+                <form id="search-form" onSubmit={this.onSubmit}>
                     <div className="ui fluid icon input">
-                        <Field
-                            name="search"
-                            component={this.renderInput}
-                            label="Search"
+                        <input
+                            id="search"
+                            onChange={this.onChange}
+                            placeholder="type your search"
+                            type="text"
+                            value={this.state.term}
                         />
                         <i
                             id="search-icon"
-                            onClick={this.props.handleSubmit(this.onSubmit)}
+                            onClick={this.onSubmit}
                             className="circular search link icon"
                         />
                     </div>
@@ -42,6 +44,13 @@ export class SearchBar extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'searchForm',
-})(SearchBar);
+const map = state => {
+    return {
+        term: state.term,
+    };
+};
+
+export default connect(
+    map,
+    { setTerm }
+)(SearchBar);

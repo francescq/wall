@@ -1,13 +1,10 @@
 import { SET_TERM } from '../actions/types';
 
-export const termReducer = (state = {}, action) => {
+export const termReducer = (term = '', action) => {
     switch (action.type) {
         case SET_TERM:
-            return {
-                ...state,
-                term: action.payload,
-            };
+            return action.payload;
         default:
-            return state;
+            return term;
     }
 };

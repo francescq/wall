@@ -25,15 +25,17 @@ describe('<Header />', () => {
         expect(wrapper.find(SideAction)).toHaveLength(1);
     });
 
-    test('should inject term of state on SearchBar', () => {
-        const searchProps = wrapper.find(SearchBar).props();
+    describe('>SearchBar />', () => {
+        test('should inject term of state on SearchBar', () => {
+            const searchProps = wrapper.find(SearchBar).props();
 
-        expect(searchProps.initialValues).toEqual({ term: 'mySearchTerm' });
-    });
+            expect(searchProps.term).toEqual('mySearchTerm');
+        });
 
-    test('should onSubmit on SearchBar', () => {
-        const searchProps = wrapper.find(SearchBar).props();
+        test('should onSubmit on SearchBar', () => {
+            const searchProps = wrapper.find(SearchBar).props();
 
-        expect(searchProps.onSubmit).toEqual('setTerm');
+            expect(searchProps.onSubmit).toEqual('setTerm');
+        });
     });
 });

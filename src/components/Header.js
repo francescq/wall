@@ -7,16 +7,12 @@ import SideAction from './SideAction';
 import { setTerm } from '../actions';
 
 export class Header extends React.Component {
-    pickTerm = props => {
-        return _.pick(props, 'term');
-    };
-
     render() {
         return (
             <div className="ui grid">
                 <div className="eleven wide column">
                     <SearchBar
-                        initialValues={this.pickTerm(this.props)}
+                        term={this.props.term}
                         onSubmit={this.props.setTerm}
                     />
                 </div>
