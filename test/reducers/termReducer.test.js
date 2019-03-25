@@ -1,12 +1,18 @@
 import { termReducer } from '../../src/reducers/termReducer';
 import { SET_TERM } from '../../src/actions/types';
 
+let action;
+
 describe('termReducer', () => {
-    it('should init term to empty string', () => {
-        const action = {
-            type: 'foo',
+    beforeEach(() => {
+        action = {
+            type: SET_TERM,
             payload: 'newTerm',
         };
+    });
+
+    it('should init term to empty string', () => {
+        action.type = 'foo';
 
         const reduced = termReducer(undefined, action);
 
@@ -14,11 +20,6 @@ describe('termReducer', () => {
     });
 
     it('should return new term', () => {
-        const action = {
-            type: SET_TERM,
-            payload: 'newTerm',
-        };
-
         const reduced = termReducer(null, action);
 
         expect(reduced).toEqual('newTerm');
