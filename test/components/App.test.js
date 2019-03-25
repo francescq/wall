@@ -1,12 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import sinon from 'sinon';
-import toJson from 'enzyme-to-json';
-import configureStore from 'redux-mock-store'; // Smart components
 
-import ConnectedApp, { App } from '../../src/components/App';
+import { App } from '../../src/components/App';
 import Header from '../../src/components/Header';
-import ItemDetail from '../../src/components/items/ItemDetail';
 import ItemsList from '../../src/components/ItemsList';
 
 let props = {};

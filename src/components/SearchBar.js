@@ -1,9 +1,16 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-class SearchBar extends React.Component {
+export class SearchBar extends React.Component {
     renderInput({ input }) {
-        return <input {...input} placeholder="type your search" type="text" />;
+        return (
+            <input
+                id="search"
+                {...input}
+                placeholder="type your search"
+                type="text"
+            />
+        );
     }
 
     onSubmit = formProps => {
@@ -13,7 +20,10 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="ui ten wide column segment">
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                <form
+                    id="search-form"
+                    onSubmit={this.props.handleSubmit(this.onSubmit)}
+                >
                     <div className="ui fluid icon input">
                         <Field
                             name="search"
@@ -21,6 +31,7 @@ class SearchBar extends React.Component {
                             label="Search"
                         />
                         <i
+                            id="search-icon"
                             onClick={this.props.handleSubmit(this.onSubmit)}
                             className="circular search link icon"
                         />
