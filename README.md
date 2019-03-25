@@ -9,7 +9,8 @@ It simulates a backend with a self-made api itemsApi with a local json file as a
 
 Wall uses CI/CD with CircleCI and Heroku
 
-#Demo Online
+# Online demo
+
 The distribution build is served through Heroku with a small [server.js](<[server.js](https://github.com/francescq/wall/blob/master/server.js)>)
 [View demo on Heroku](https://wall2019.herokuapp.com/)
 
