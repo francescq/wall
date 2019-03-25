@@ -1,4 +1,5 @@
 import { GET_FAVOURITES, ADD_FAVOURITE, REM_FAVOURITE } from '../actions/types';
+import _ from 'lodash';
 
 export const favouritesReducer = (state = {}, action) => {
     switch (action.type) {

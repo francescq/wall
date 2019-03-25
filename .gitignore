@@ -13,6 +13,9 @@
 #ide
 .vscode/
 
+#test
+junit.xml
+
 # misc
 .DS_Store
 .env.local

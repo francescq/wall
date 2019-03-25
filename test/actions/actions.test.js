@@ -8,16 +8,24 @@ import {
 } from '../../src/actions/types';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import sinon from 'sinon';
 import { getAction } from '../utils/reduxThunk';
+import ItemsApi from '../../src/api/ItemsApi';
 
 import '@babel/polyfill';
 
+let state = {
+    term: 'myTerm',
+};
 const mockStore = configureStore([thunk]);
-const store = mockStore();
+const store = mockStore(() => state);
+let itemsApi;
 
 describe('actions', () => {
     beforeEach(() => {
         store.clearActions();
+
+        itemsApi = new ItemsApi({});
     });
 
     describe('setTerm', () => {
@@ -54,4 +62,48 @@ describe('actions', () => {
             });
         });
     });
+
+    describe('searchItem', () => {
+        let stub;
+        beforeEach(() => {
+            stub = sinon.spy(ItemsApi.prototype, 'searchItems');
+        });
+
+        afterEach(() => {
+            stub.restore();
+        });
+        it('searchItem', () => {
+            store.dispatch(searchItem());
+
+            expect(stub.calledOnce).toBe(true);
+        });
+
+        it('should get the current term from the state', () => {
+            store.dispatch(searchItem());
+
+            const props = stub.args[0][0];
+
+            expect(props).toEqual('myTerm');
+        });
+
+        it('should return a GET_ITEMS action', async () => {
+            store.dispatch(searchItem());
+
+            expect(await getAction(store, GET_ITEMS)).toEqual({
+                payload: {
+                    data: [],
+                    page: {
+                        order: 'asc',
+                        orderBy: 'title',
+                        page: -1,
+                        size: 5,
+                        totalPages: 0,
+                    },
+                },
+                type: GET_ITEMS,
+            });
+        });
+    });
+
+    describe('addFavourite', () => {});
 });
