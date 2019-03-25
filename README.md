@@ -51,8 +51,10 @@ npm start
 -   Scss
 -   Dropdown: adapted this dropdown [Dropdown](https://codepen.io/_danko/pen/NRLdVo)
 
-#Contribute
+# Contribute
+
 PRs not accepted.
 
-#License
+# License
+
 Do not use. This repo is going to disappear soon.
