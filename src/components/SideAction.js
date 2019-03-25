@@ -24,10 +24,13 @@ class SideAction extends React.Component {
         }
 
         return (
-            <div onClick={this.onFavouriteClick} className="ui one column grid">
+            <div
+                onClick={this.onFavouriteClick}
+                className="ui link one column grid"
+            >
                 <div className="mobile only tablet only column">
                     <div className="ui segment">
-                        <a className="teal item">
+                        <button className="ui button primary favourite-button">
                             <i
                                 className={`star icon ${
                                     this.props.favourites.length
@@ -35,17 +38,15 @@ class SideAction extends React.Component {
                                         : ''
                                 }`}
                             />
-                        </a>
-                        <div className="ui teal left pointing label">
                             {this.props.favourites.length}
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="computer only one column row">
                     <div className="ui segment">
                         <div className="ui fluid icon input">
                             <a>
-                                <i className="star icon" />
+                                <i className="star link icon" />
                                 <span>Favourites</span>
                                 <div className="ui teal left pointing label">
                                     {this.props.favourites.length}
