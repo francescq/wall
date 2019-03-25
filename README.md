@@ -11,7 +11,7 @@ Wall uses CI/CD with CircleCI and Heroku
 
 # Online demo
 
-The distribution build is served through Heroku with a small [server.js](<[server.js](https://github.com/francescq/wall/blob/master/server.js)>)
+The distribution build is served through Heroku with a small [server.js](https://github.com/francescq/wall/blob/master/server.js)
 [View demo on Heroku](https://wall2019.herokuapp.com/)
 
 # Setup
@@ -49,7 +49,7 @@ npm start
 -   Semantic-ui
 -   React-paginate: [React-paginate](https://github.com/AdeleD/react-paginate/)
 -   Scss
--   Dropdown: adapted this dropdown [Dropdown](<[Dropdown](https://codepen.io/_danko/pen/NRLdVo)>)
+-   Dropdown: adapted this dropdown [Dropdown](https://codepen.io/_danko/pen/NRLdVo)
 
 #Contribute
 PRs not accepted.
