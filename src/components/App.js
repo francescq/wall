@@ -4,6 +4,7 @@ import '@babel/polyfill';
 
 import Header from './Header';
 import ItemsList from './ItemsList';
+import GoogleTagManager from './GoogleTagManager';
 import { getFavourites } from '../actions';
 
 export class App extends React.Component {
@@ -16,6 +17,7 @@ export class App extends React.Component {
             <div className="ui container">
                 <Header />
                 <ItemsList />
+                <GoogleTagManager gtmId="UA-137188719-1" />
             </div>
         );
     }
