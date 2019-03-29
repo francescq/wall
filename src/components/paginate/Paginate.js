@@ -2,7 +2,7 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import Dropdown from '../dropdown/Dropdown';
 import { connect } from 'react-redux';
-import { searchItem } from '../../actions';
+import { searchItem } from '../../store/actions';
 
 import './Paginate.scss';
 

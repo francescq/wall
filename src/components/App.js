@@ -5,7 +5,7 @@ import '@babel/polyfill';
 import Header from './Header';
 import ItemsList from './ItemsList';
 import GoogleTagManager from './GoogleTagManager';
-import { getFavourites } from '../actions';
+import { getFavourites } from '../store/actions';
 
 export class App extends React.Component {
     componentDidMount() {

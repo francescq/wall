@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { searchItem } from '../../actions';
+import { searchItem } from '../../store/actions';
 import './Dropdown.scss';
 
 class Dropdown extends React.Component {

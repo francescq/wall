@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTerm } from '../actions';
+import { setTerm } from '../store/actions';
 
 export class SearchBar extends React.Component {
     constructor(props) {

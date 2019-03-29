@@ -4,11 +4,11 @@ import {
     GET_FAVOURITES,
     ADD_FAVOURITE,
     REM_FAVOURITE,
-} from '../actions/types';
+} from './types';
 
-import ItemsApi from '../api/ItemsApi';
-import db from '../../server/items.json';
-import FavouritesApi from '../api/FavouritesApi';
+import ItemsApi from '../../api/ItemsApi';
+import db from '../../../server/items.json';
+import FavouritesApi from '../../api/FavouritesApi';
 
 const itemsApi = new ItemsApi(db);
 const favouritesApi = new FavouritesApi();

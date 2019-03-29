@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import { GET_ITEMS } from '../actions/types';
 
-export const paginationReducer = (
-    state = { page: { orderBy: 'title', order: 'asc' } },
-    action
-) => {
+const initialPagination = { page: { orderBy: 'title', order: 'asc' } };
+
+export const paginationReducer = (state = initialPagination, action) => {
     switch (action.type) {
         case GET_ITEMS:
             //console.log(action.payload);

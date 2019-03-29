@@ -1,5 +1,5 @@
-import { termReducer } from '../../src/reducers/termReducer';
-import { SET_TERM } from '../../src/actions/types';
+import { termReducer } from '../../../src/store/reducers/termReducer';
+import { SET_TERM } from '../../../src/store/actions/types';
 
 let action;
 

@@ -1,7 +1,9 @@
 import { GET_FAVOURITES, ADD_FAVOURITE, REM_FAVOURITE } from '../actions/types';
 import _ from 'lodash';
 
-export const favouritesReducer = (state = {}, action) => {
+const initialFavourites = {};
+
+export const favouritesReducer = (state = initialFavourites, action) => {
     switch (action.type) {
         case GET_FAVOURITES:
             // return {

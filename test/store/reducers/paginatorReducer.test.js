@@ -1,5 +1,5 @@
-import { paginationReducer } from '../../src/reducers/paginatorReducer';
-import { GET_ITEMS } from '../../src/actions/types';
+import { paginationReducer } from '../../../src/store/reducers/paginatorReducer';
+import { GET_ITEMS } from '../../../src/store/actions/types';
 
 let action;
 

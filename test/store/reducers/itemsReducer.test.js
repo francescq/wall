@@ -1,5 +1,5 @@
-import { itemsReducer } from '../../src/reducers/itemsReducer';
-import { GET_ITEMS } from '../../src/actions/types';
+import { itemsReducer } from '../../../src/store/reducers/itemsReducer';
+import { GET_ITEMS } from '../../../src/store/actions/types';
 
 let action;
 

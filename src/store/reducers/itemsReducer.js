@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import { GET_ITEMS } from '../actions/types';
 
-export const itemsReducer = (items = {}, action) => {
+const initialItems = {};
+
+export const itemsReducer = (items = initialItems, action) => {
     switch (action.type) {
         case GET_ITEMS:
             return {

@@ -1,9 +1,9 @@
-import { favouritesReducer } from '../../src/reducers/favouritesReducer';
+import { favouritesReducer } from '../../../src/store/reducers/favouritesReducer';
 import {
     GET_FAVOURITES,
     ADD_FAVOURITE,
     REM_FAVOURITE,
-} from '../../src/actions/types';
+} from '../../../src/store/actions/types';
 
 let action;
 

@@ -1,7 +1,11 @@
 import './ItemDetail.css';
 import React from 'react';
 import { connect } from 'react-redux';
-import { getFavourites, addFavourite, removeFavourite } from '../../actions';
+import {
+    getFavourites,
+    addFavourite,
+    removeFavourite,
+} from '../../store/actions';
 
 import ItemHeader from './ItemHeader';
 import ItemFavouriteButton from './ItemFavouriteButton';

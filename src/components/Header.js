@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import SearchBar from './SearchBar';
 import SideAction from './SideAction';
-import { setTerm } from '../actions';
+import { setTerm } from '../store/actions';
 
 export class Header extends React.Component {
     render() {

@@ -1,16 +1,17 @@
-import { setTerm, searchItem } from '../../src/actions';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import sinon from 'sinon';
+import { getAction } from '../../utils/reduxThunk';
+import ItemsApi from '../../../src/api/ItemsApi';
+
+import { setTerm, searchItem } from '../../../src/store/actions';
 import {
     GET_ITEMS,
     SET_TERM,
     GET_FAVOURITES,
     ADD_FAVOURITE,
     REM_FAVOURITE,
-} from '../../src/actions/types';
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import sinon from 'sinon';
-import { getAction } from '../utils/reduxThunk';
-import ItemsApi from '../../src/api/ItemsApi';
+} from '../../../src/store/actions/types';
 
 import '@babel/polyfill';
 

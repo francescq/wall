@@ -1,7 +1,8 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
-import { addFavourite, removeFavourite } from '../actions';
+
+import { addFavourite, removeFavourite } from '../store/actions';
 import FavouritesList from './FavouritesList';
 import './SideAction.scss';
 
