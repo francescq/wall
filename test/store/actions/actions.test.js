@@ -17,6 +17,7 @@ import '@babel/polyfill';
 
 let state = {
     term: 'myTerm',
+    pagination: { orderBy: 'title', order: 'asc' },
 };
 const mockStore = configureStore([thunk]);
 const store = mockStore(() => state);

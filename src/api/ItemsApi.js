@@ -94,9 +94,6 @@ export default class ItemsApi {
         if (!pagination.size) {
             pagination.size = 5;
         }
-        if (!pagination.order) {
-            pagination.order = 'asc';
-        }
 
         this.pagination = pagination;
 

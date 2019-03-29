@@ -2,16 +2,16 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import Dropdown from '../dropdown/Dropdown';
 import { connect } from 'react-redux';
-import { searchItem } from '../../store/actions';
+import { setPage } from '../../store/actions';
 
 import './Paginate.scss';
 
 class Paginate extends React.Component {
     onPageChange = newPageNumber => {
-        const newPage = this.props.pagination.page;
+        const newPage = this.props.pagination;
         newPage.page = newPageNumber.selected;
         console.log('page change');
-        this.props.searchItem(newPage);
+        this.props.setPage(newPage);
     };
 
     getItemKeys(item) {
@@ -33,17 +33,17 @@ class Paginate extends React.Component {
     }
 
     render() {
-        const { page } = this.props.pagination;
+        const { page, totalPages } = this.props.pagination;
 
         return (
             <div className="ui grid">
                 <div className="eleven wide column">
                     <ReactPaginate
                         onPageChange={this.onPageChange}
-                        pageCount={page.totalPages}
+                        pageCount={totalPages}
                         pageRangeDisplayed={2}
                         marginPagesDisplayed={0}
-                        initialPage={page.page}
+                        initialPage={page}
                         nextLabel={'>'}
                         previousLabel={'<'}
                         breakLabel={'...'}
@@ -72,5 +72,5 @@ const map = state => {
 };
 export default connect(
     map,
-    { searchItem }
+    { setPage }
 )(Paginate);

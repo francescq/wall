@@ -6,9 +6,11 @@ import Header from './Header';
 import ItemsList from './ItemsList';
 import GoogleTagManager from './GoogleTagManager';
 import { getFavourites } from '../store/actions';
+import { GET_FAVOURITES } from '../store/actions/types';
 
 export class App extends React.Component {
     componentDidMount() {
+        console.log(this.props);
         this.props.getFavourites();
     }
 
@@ -23,7 +25,18 @@ export class App extends React.Component {
     }
 }
 
+const mapDispatch = dispatch => {
+    return {
+        getFavourites: () => {
+            dispatch({
+                type: GET_FAVOURITES,
+                payload: getFavourites,
+            });
+        },
+    };
+};
+
 export default connect(
     null,
-    { getFavourites }
+    mapDispatch
 )(App);

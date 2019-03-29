@@ -22,7 +22,7 @@ class Dropdown extends React.Component {
         e.preventDefault();
         const newOrderBy = e.target.getAttribute('data-value');
 
-        const newPage = this.props.pagination.page;
+        const newPage = this.props.pagination;
         newPage.orderBy = newOrderBy;
         console.log('do orderBy');
         this.props.searchItem(newPage);
@@ -32,7 +32,7 @@ class Dropdown extends React.Component {
         e.preventDefault();
         const newOrder = e.target.getAttribute('data-value');
 
-        const newPage = this.props.pagination.page;
+        const newPage = this.props.pagination;
         newPage.order = newOrder;
         console.log('do order');
         this.props.searchItem(newPage);
@@ -48,7 +48,7 @@ class Dropdown extends React.Component {
             >
                 <a href="#" onClick={this.doOrderBy} data-value={item.key}>
                     {item.value}{' '}
-                    {this.props.pagination.page.orderBy === item.key
+                    {this.props.pagination.orderBy === item.key
                         ? checked
                         : null}
                 </a>
@@ -73,11 +73,11 @@ class Dropdown extends React.Component {
                     className="ui button primary dropdown_align"
                 >
                     {this.getCurentOrderedProperty(
-                        this.props.pagination.page.orderBy
+                        this.props.pagination.orderBy
                     )}
                     <i
                         className={`${
-                            this.props.pagination.page.order === 'desc'
+                            this.props.pagination.order === 'desc'
                                 ? 'sort down'
                                 : 'sort up'
                         } icon`}
@@ -97,7 +97,7 @@ class Dropdown extends React.Component {
                     >
                         <a href="#" onClick={this.doOrder} data-value="asc">
                             ascendind{' '}
-                            {this.props.pagination.page.order === 'asc'
+                            {this.props.pagination.order === 'asc'
                                 ? checked
                                 : null}
                         </a>
@@ -109,7 +109,7 @@ class Dropdown extends React.Component {
                     >
                         <a href="#" onClick={this.doOrder} data-value="desc">
                             descending{' '}
-                            {this.props.pagination.page.order === 'desc'
+                            {this.props.pagination.order === 'desc'
                                 ? checked
                                 : null}
                         </a>

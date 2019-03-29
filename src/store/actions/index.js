@@ -1,5 +1,6 @@
 import {
     GET_ITEMS,
+    SET_PAGE,
     SET_TERM,
     GET_FAVOURITES,
     ADD_FAVOURITE,
@@ -13,12 +14,11 @@ import FavouritesApi from '../../api/FavouritesApi';
 const itemsApi = new ItemsApi(db);
 const favouritesApi = new FavouritesApi();
 
-export const searchItem = page => async (dispatch, getState) => {
-    const myPage = page ? page : { orderBy: 'title', order: 'asc' };
-
+export const searchItem = () => async (dispatch, getState) => {
     const term = getState().term;
+    const page = getState().pagination;
 
-    const answer = await itemsApi.searchItems(term, myPage);
+    const answer = await itemsApi.searchItems(term, page);
 
     return dispatch({
         type: GET_ITEMS,
@@ -32,13 +32,14 @@ export const setTerm = term => async dispatch => {
     return dispatch(searchItem());
 };
 
-export const getFavourites = () => async dispatch => {
-    const answer = await favouritesApi.get();
+export const setPage = page => async dispatch => {
+    dispatch({ type: SET_PAGE, payload: page });
 
-    return dispatch({
-        type: GET_FAVOURITES,
-        payload: answer,
-    });
+    return dispatch(searchItem());
+};
+
+export const getFavourites = () => async dispatch => {
+    return await favouritesApi.get();
 };
 
 export const addFavourite = item => async dispatch => {

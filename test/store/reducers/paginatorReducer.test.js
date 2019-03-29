@@ -16,12 +16,12 @@ describe('paginatorReducer', () => {
 
         const reduced = paginationReducer(undefined, action);
 
-        expect(reduced).toEqual({ page: { orderBy: 'title', order: 'asc' } });
+        expect(reduced).toEqual({ orderBy: 'title', order: 'asc' });
     });
 
     it('should return new term', () => {
         const reduced = paginationReducer(null, action);
 
-        expect(reduced).toEqual({ page: { foo: 'bar' } });
+        expect(reduced).toEqual({ foo: 'bar' });
     });
 });

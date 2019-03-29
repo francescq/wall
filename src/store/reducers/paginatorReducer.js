@@ -1,17 +1,17 @@
 import _ from 'lodash';
-import { GET_ITEMS } from '../actions/types';
+import { SET_PAGE, GET_ITEMS } from '../actions/types';
 
-const initialPagination = { page: { orderBy: 'title', order: 'asc' } };
+const initialPagination = { orderBy: 'title', order: 'asc' };
 
-export const paginationReducer = (state = initialPagination, action) => {
+export const paginationReducer = (page = initialPagination, action) => {
     switch (action.type) {
         case GET_ITEMS:
-            //console.log(action.payload);
+            return { ...action.payload.page };
+        case SET_PAGE:
             return {
-                ...state,
-                page: action.payload.page,
+                ...action.payload,
             };
         default:
-            return state;
+            return page;
     }
 };
