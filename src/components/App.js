@@ -10,7 +10,6 @@ import { GET_FAVOURITES } from '../store/actions/types';
 
 export class App extends React.Component {
     componentDidMount() {
-        console.log(this.props);
         this.props.getFavourites();
     }
 
