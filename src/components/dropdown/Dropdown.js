@@ -24,7 +24,6 @@ class Dropdown extends React.Component {
 
         const newPage = this.props.pagination;
         newPage.orderBy = newOrderBy;
-        console.log('do orderBy');
         this.props.searchItem(newPage);
     };
 
@@ -34,7 +33,6 @@ class Dropdown extends React.Component {
 
         const newPage = this.props.pagination;
         newPage.order = newOrder;
-        console.log('do order');
         this.props.searchItem(newPage);
     };
 

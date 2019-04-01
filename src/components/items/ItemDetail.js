@@ -11,7 +11,7 @@ import ItemHeader from './ItemHeader';
 import ItemFavouriteButton from './ItemFavouriteButton';
 
 class ItemDetail extends React.Component {
-    onStarClick = e => {
+    onStarClick = () => {
         const { item } = this.props;
 
         if (this.isFav) {

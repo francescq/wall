@@ -2,7 +2,7 @@ import {
     GET_ITEMS,
     SET_PAGE,
     SET_TERM,
-    GET_FAVOURITES,
+    //GET_FAVOURITES,
     ADD_FAVOURITE,
     REM_FAVOURITE,
 } from './types';
@@ -38,7 +38,7 @@ export const setPage = page => async dispatch => {
     return dispatch(searchItem());
 };
 
-export const getFavourites = () => async dispatch => {
+export const getFavourites = () => async () => {
     return await favouritesApi.get();
 };
 

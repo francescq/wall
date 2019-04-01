@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import ReactPaginate from 'react-paginate';
 import Dropdown from '../dropdown/Dropdown';
 import { connect } from 'react-redux';
@@ -10,7 +11,6 @@ class Paginate extends React.Component {
     onPageChange = newPageNumber => {
         const newPage = this.props.pagination;
         newPage.page = newPageNumber.selected;
-        console.log('page change');
         this.props.setPage(newPage);
     };
 

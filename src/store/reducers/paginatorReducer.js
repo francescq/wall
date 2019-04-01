@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { SET_PAGE, GET_ITEMS } from '../actions/types';
 
 const initialPagination = { orderBy: 'title', order: 'asc' };

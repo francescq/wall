@@ -1,6 +1,8 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: {
@@ -12,6 +14,9 @@ module.exports = {
             title: 'Production',
             hash: true,
             template: './src/index.html',
+        }),
+        new WebpackVisualizerPlugin({
+            filename: '../statistics.html'
         }),
     ],
     output: {
