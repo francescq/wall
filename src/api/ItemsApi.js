@@ -6,7 +6,7 @@ export default class ItemsApi {
     _queryItems = query => {
         return this.db.items.filter(e => {
             if (!query) {
-                return false;
+                return this.db.items;
             }
 
             const regex = new RegExp(query, 'i');
@@ -28,7 +28,8 @@ export default class ItemsApi {
         const pageMeta = {};
         pageMeta.size = size;
         pageMeta.totalPages = totalPages;
-        pageMeta.page = page < totalPages ? page : totalPages - 1;
+        pageMeta.page =
+            page < totalPages ? page : totalPages - 1 >= 0 ? totalPages - 1 : 0;
         pageMeta.orderBy = orderBy;
         pageMeta.order = order;
 

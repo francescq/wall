@@ -4,9 +4,12 @@ import { shallow } from 'enzyme';
 import { Header } from '../../src/components/Header';
 import SearchBar from '../../src/components/SearchBar';
 import SideAction from '../../src/components/SideAction';
+import sinon from 'sinon';
+import _ from 'lodash';
 
 let props = {};
 let wrapper;
+let myDebouncedSetTerm;
 
 describe('<Header />', () => {
     beforeEach(() => {
@@ -15,7 +18,15 @@ describe('<Header />', () => {
             term: 'mySearchTerm',
         };
 
+        myDebouncedSetTerm = sinon
+            .stub(_, 'debounce')
+            .callsFake(() => 'myDebouncedSetTerm');
+
         wrapper = shallow(<Header {...props} />);
+    });
+
+    afterEach(() => {
+        myDebouncedSetTerm.restore();
     });
 
     test('renders the SearchBar', () => {
@@ -31,6 +42,12 @@ describe('<Header />', () => {
             const searchProps = wrapper.find(SearchBar).props();
 
             expect(searchProps.term).toEqual('mySearchTerm');
+        });
+
+        test('should debounce setTerm', () => {
+            const searchProps = wrapper.find(SearchBar).props();
+
+            expect(searchProps.onSubmit).toEqual('myDebouncedSetTerm');
         });
     });
 });

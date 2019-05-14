@@ -70,7 +70,7 @@ describe('itempsApi', () => {
         it('should return all items', async () => {
             const items = await api.searchItems(null);
 
-            expect(items.data.length).toEqual(0);
+            expect(items.data.length).toEqual(5);
         });
 
         it('should filter by total match', async () => {
@@ -127,13 +127,13 @@ describe('itempsApi', () => {
         });
 
         describe('page', () => {
-            it('should return -1 if no result', async () => {
+            it('should return 0 if no result', async () => {
                 const items = await api.searchItems('foo', {
                     page: 4,
                     size: 1,
                 });
 
-                expect(items.page.page).toBe(-1);
+                expect(items.page.page).toBe(0);
             });
 
             it('should return the current page', async () => {

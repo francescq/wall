@@ -17,6 +17,7 @@ const favouritesApi = new FavouritesApi();
 export const searchItem = () => async (dispatch, getState) => {
     const term = getState().term;
     const page = getState().pagination;
+    //console.log('search', term, page);
 
     const answer = await itemsApi.searchItems(term, page);
 
@@ -29,6 +30,7 @@ export const searchItem = () => async (dispatch, getState) => {
 export const setTerm = term => async dispatch => {
     dispatch({ type: SET_TERM, payload: term });
 
+    //console.log('setTerm', term);
     return dispatch(searchItem());
 };
 
