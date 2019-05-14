@@ -17,8 +17,8 @@ module.exports = {
     }),
     new WebpackVisualizerPlugin({
       filename: '../statistics.html'
-    })
-    // new CompressionPlugin()
+    }),
+    new CompressionPlugin()
   ],
   output: {
     chunkFilename: '[name].bundle.js',

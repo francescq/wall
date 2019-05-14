@@ -1,5 +1,9 @@
 .page {
     display: inline;
+
+    a {
+        cursor: pointer;
+    }
 }
 
 .activePage {
