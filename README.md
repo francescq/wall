@@ -52,7 +52,7 @@ npm start
 -   React-paginate: [React-paginate](https://github.com/AdeleD/react-paginate/)
 -   Scss
 -   Dropdown: adapted this dropdown [Dropdown](https://codepen.io/_danko/pen/NRLdVo)
--   Husky, Eslint, Pretties
+-   Husky, Eslint, Prettier
 
 # Contribute
 
