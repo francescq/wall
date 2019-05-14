@@ -7,6 +7,8 @@ The application has been developed mobile first
 
 It simulates a backend with a self-made api itemsApi with a local json file as a source
 
+To play with it start searching by "wall" as is the search it returns all the results
+
 Wall uses CI/CD with CircleCI and Heroku
 
 # Online demo
