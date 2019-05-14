@@ -1,7 +1,7 @@
 # Wall
 
 Wall application simulating an e-commerce app.
-It usere React, Semantic ui for rendering
+It uses React, Semantic ui for rendering
 
 The application has been developed mobile first
 
