@@ -1,41 +1,39 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import '@babel/polyfill';
+import React from 'react'
+import { connect } from 'react-redux'
+import '@babel/polyfill'
 
-import Header from './Header';
-import ItemsList from './ItemsList';
-import GoogleTagManager from './GoogleTagManager';
-import { getFavourites } from '../store/actions';
-import { GET_FAVOURITES } from '../store/actions/types';
+import Header from './Header'
+import ItemsList from './ItemsList'
+import { getFavourites } from '../store/actions'
+import { GET_FAVOURITES } from '../store/actions/types'
 
 export class App extends React.Component {
-    componentDidMount() {
-        this.props.getFavourites();
-    }
+  componentDidMount () {
+    this.props.getFavourites()
+  }
 
-    render() {
-        return (
-            <div className="ui container">
-                <Header />
-                <ItemsList />
-                <GoogleTagManager gtmId="UA-137188719-1" />
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div className='ui container'>
+        <Header />
+        <ItemsList />
+      </div>
+    )
+  }
 }
 
 const mapDispatch = dispatch => {
-    return {
-        getFavourites: () => {
-            dispatch({
-                type: GET_FAVOURITES,
-                payload: getFavourites,
-            });
-        },
-    };
-};
+  return {
+    getFavourites: () => {
+      dispatch({
+        type: GET_FAVOURITES,
+        payload: getFavourites
+      })
+    }
+  }
+}
 
 export default connect(
-    null,
-    mapDispatch
-)(App);
+  null,
+  mapDispatch
+)(App)
