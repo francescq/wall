@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTerm } from '../store/actions';
 
 export class SearchBar extends React.Component {
     constructor(props) {
@@ -17,7 +16,10 @@ export class SearchBar extends React.Component {
     };
 
     onChange = e => {
-        this.setState({ term: e.target.value });
+        const newTerm = e.target.value;
+        this.setState({ term: newTerm });
+
+        this.props.onSubmit(newTerm);
     };
 
     render() {
@@ -50,7 +52,4 @@ const map = state => {
     };
 };
 
-export default connect(
-    map,
-    { setTerm }
-)(SearchBar);
+export default connect(map)(SearchBar);

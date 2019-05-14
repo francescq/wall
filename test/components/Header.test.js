@@ -14,6 +14,7 @@ describe('<Header />', () => {
             setTerm: 'setTerm',
             term: 'mySearchTerm',
         };
+
         wrapper = shallow(<Header {...props} />);
     });
 
@@ -30,12 +31,6 @@ describe('<Header />', () => {
             const searchProps = wrapper.find(SearchBar).props();
 
             expect(searchProps.term).toEqual('mySearchTerm');
-        });
-
-        test('should inject onSubmit on SearchBar', () => {
-            const searchProps = wrapper.find(SearchBar).props();
-
-            expect(searchProps.onSubmit).toEqual('setTerm');
         });
     });
 });

@@ -37,7 +37,7 @@ describe('<SearchBar />', () => {
 
         wrapper.find('#search-form').simulate('submit', fakeEvent);
 
-        expect(props.onSubmit).toBeCalledTimes(1);
+        expect(props.onSubmit).toBeCalledTimes(2);
         expect(props.onSubmit).toHaveBeenCalledWith('myNewTerm');
     });
 
@@ -47,7 +47,7 @@ describe('<SearchBar />', () => {
 
         wrapper.find('#search-form').simulate('submit', fakeEvent);
 
-        expect(props.onSubmit).toBeCalledTimes(1);
+        expect(props.onSubmit).toBeCalledTimes(2);
         expect(props.onSubmit).toHaveBeenCalledWith('myNewTerm');
     });
 });

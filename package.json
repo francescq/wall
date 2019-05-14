@@ -64,6 +64,7 @@
     "dependencies": {
         "@babel/runtime": "^7.4.0",
         "express": "^4.16.4",
+        "lodash": "^4.17.11",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-paginate": "^6.3.0",
