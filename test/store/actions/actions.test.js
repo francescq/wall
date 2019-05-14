@@ -55,7 +55,7 @@ describe('actions', () => {
                     page: {
                         order: 'asc',
                         orderBy: 'title',
-                        page: -1,
+                        page: 0,
                         size: 5,
                         totalPages: 0,
                     },
@@ -97,7 +97,7 @@ describe('actions', () => {
                     page: {
                         order: 'asc',
                         orderBy: 'title',
-                        page: -1,
+                        page: 0,
                         size: 5,
                         totalPages: 0,
                     },
