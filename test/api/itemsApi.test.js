@@ -105,7 +105,7 @@ describe('itempsApi', () => {
             });
 
             it('should OR filter by email', async () => {
-                const items = await api.searchItems('wallapop');
+                const items = await api.searchItems('mail');
 
                 expect(items.data.length).toBe(5);
             });

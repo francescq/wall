@@ -2,9 +2,9 @@ import {
     GET_ITEMS,
     SET_PAGE,
     SET_TERM,
-    //GET_FAVOURITES,
     ADD_FAVOURITE,
     REM_FAVOURITE,
+    GET_FAVOURITES,
 } from './types';
 
 import ItemsApi from '../../api/ItemsApi';
@@ -40,8 +40,13 @@ export const setPage = page => async dispatch => {
     return dispatch(searchItem());
 };
 
-export const getFavourites = () => async () => {
-    return await favouritesApi.get();
+export const getFavourites = () => async dispatch => {
+    const fav = await favouritesApi.get();
+
+    return dispatch({
+        type: GET_FAVOURITES,
+        payload: fav,
+    });
 };
 
 export const addFavourite = item => async dispatch => {

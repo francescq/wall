@@ -12,6 +12,7 @@ describe('<App />', () => {
     beforeEach(() => {
         props = {
             getFavourites: jest.fn(),
+            searchItem: jest.fn(),
         };
         app = shallow(<App {...props} />);
     });
@@ -26,5 +27,9 @@ describe('<App />', () => {
 
     it('should load favourites', () => {
         expect(props.getFavourites).toBeCalledTimes(1);
+    });
+
+    it('should show all items after initial load', () => {
+        expect(props.searchItem).toBeCalledTimes(1);
     });
 });
