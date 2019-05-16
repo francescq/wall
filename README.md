@@ -7,7 +7,12 @@ The application has been developed mobile first
 
 It simulates a backend with a self-made api itemsApi with a local json file as a source
 
-To play with it start searching by "wall" as is the search it returns all the results
+Features:
+-Filter results by: name, price, title, description, caseInsentitive
+-Paginated results
+-See favourites at any time
+-Filter favourites view
+-Add remove favourites at any time
 
 Wall uses CI/CD with CircleCI and Heroku
 
@@ -47,7 +52,7 @@ npm start
 
 -   React / Redux / Thunk
 -   Webpack
--   Jest + babel + enzyme + sinon
+-   Jest + Babel + Enzyme + Sinon
 -   Semantic-ui
 -   React-paginate: [React-paginate](https://github.com/AdeleD/react-paginate/)
 -   Scss
