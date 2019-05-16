@@ -46,7 +46,7 @@ describe('itempsApi', () => {
         });
 
         it('should order by price asc', async () => {
-            const items = await api.searchItems('wal', {
+            const items = await api.searchItems('email', {
                 size: 2,
                 orderBy: 'price',
                 order: 'asc',
@@ -56,7 +56,7 @@ describe('itempsApi', () => {
         });
 
         it('should order by price desc', async () => {
-            const items = await api.searchItems('wal', {
+            const items = await api.searchItems('email', {
                 size: 1,
                 orderBy: 'price',
                 order: 'desc',
